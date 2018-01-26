@@ -1,0 +1,6 @@
+---
+Name: sscounter
+---
+SilverStripe\Admin\LeftAndMain:
+  extensions:
+    - Marcz\SSCounter\SSCounterAdminExtension
