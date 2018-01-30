@@ -1,1 +1,2 @@
-require('../boot/index.js');
+require('../boot/index');
+require('../components/SSCounterEntwine');

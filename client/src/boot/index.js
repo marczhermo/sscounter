@@ -1,4 +1,6 @@
 /* global document */
+import SSCounterValues from '../state/SSCounterValues';
+
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOMContentLoaded');
+  SSCounterValues.clear();
 });

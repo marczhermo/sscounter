@@ -1,13 +1,44 @@
 // Reference _variables.scss
-.sscounter-primary {
+.sscounter-info + button {
     background: $brand-primary;
 }
-.sscounter-secondary {
-    background: $brand-secondary;
-}
-.sscounter-success {
+.sscounter-success + button {
     background: $brand-success;
 }
-.sscounter-danger {
+.sscounter-warning + button {
+    background: $orange;
+}
+.sscounter-danger + button {
     background: $brand-danger;
+}
+.sscounter-happy + button {
+    background: $yellow;
+}
+.sscounter-sad + button {
+    background: $purple;
+}
+.sscounter {
+    .btn__title {
+        font-size: 3rem;
+    }
+    .btn[class*=font-icon-]:before {
+        font-size: 2rem;
+    }
+    + button {
+        color: white;
+        padding: 10px 20px;
+    }
+}
+// Override existing css
+.cms-edit-form:not(.AssetAdmin) .form-group.sscounter {
+    width:25%;
+    float: left;
+    display: block;
+    padding: 0 25px;
+    .form__field-label {
+        display: block;
+        max-width: 100%;
+        flex: none;
+        font-weight: bold;
+    }
 }
