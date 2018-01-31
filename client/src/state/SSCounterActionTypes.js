@@ -1,3 +1,4 @@
 export default {
-  SAMPLE: 'SAMPLE'
+  INCREMENT: 'INCREMENT',
+  CLEAN: 'CLEAN'
 };

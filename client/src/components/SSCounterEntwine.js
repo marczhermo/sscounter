@@ -1,49 +1,61 @@
 /* global document */
 import jQuery from 'jquery';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { schemaMerge } from 'lib/schemaFieldValues';
-import SSCounter from '../components/SSCounter';
+import { loadComponent } from 'lib/Injector';
+import { setInterval, clearInterval } from 'timers';
+import root from 'window-or-global';
 
-document.addEventListener('DOMContentLoaded', () => {
-  jQuery.entwine('marcz', ($) => {
-    $('.sscounter-component').entwine({
-      Fields: {},
+const SSCounterReact = loadComponent('SSCounterReact');
 
-      onmatch() {
-        this._super();
+jQuery.entwine('marcz', ($) => {
+  $('.sscounter-component').entwine({
+    Timer: {},
 
-        this.refresh();
-      },
+    onmatch() {
+      this._super();
+      const props = this.getAttributes();
+      const timer = this.getTimer();
 
-      onunmatch() {
-        this._super();
+      // Wait until window.ss.store is available before rendering component
+      clearInterval(timer[props.name]);
+      const interval = setInterval(() => {
+        if (root.ss.store && root.ss.apolloClient) {
+          clearInterval(timer[props.name]);
+          this.render();
+        }
+      });
 
-        const fields = this.getFields();
-        const index = $(this).find('input').attr('name');
+      timer[props.name] = interval;
+    },
 
-        if (fields[index] === undefined) return;
+    onunmatch() {
+      this._super();
 
-        fields[index].cleanUp();
-        delete fields[index];
-      },
+      // solves errors given by ReactDOM "no matched root found" error.
+      ReactDOM.unmountComponentAtNode(this[0]);
+    },
 
-      refresh() {
-        const props = this.getAttributes();
-        const fields = this.getFields();
+    render() {
+      const props = this.getAttributes();
 
-        fields[props.name] = new SSCounter(props);
-      },
+      ReactDOM.render(
+        <SSCounterReact {...props} noHolder />,
+        this[0]
+      );
+    },
 
-      /**
-       * Find the selected node and get attributes associated to attach the data to the form
-       *
-       * @returns {Object}
-       */
-      getAttributes() {
-        const state = $('input.sscounter', this).data('state') || null;
-        const schema = $('input.sscounter', this).data('schema') || null;
+    /**
+     * Find the selected node and get attributes associated to attach the data to the form
+     *
+     * @returns {Object}
+     */
+    getAttributes() {
+      const state = $('input.sscounter', this).data('state') || null;
+      const schema = $('input.sscounter', this).data('schema') || null;
 
-        return schemaMerge(schema, state);
-      },
-    });
+      return schemaMerge(schema, state);
+    },
   });
 });

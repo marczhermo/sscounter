@@ -45,7 +45,8 @@
     "redux": "https://registry.npmjs.org/redux/-/redux-3.0.5.tgz",
     "redux-form": "^6.0.2",
     "redux-mock-store": "^1.2.3",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "window-or-global": "^1.0.1"
   },
   "devDependencies": {
     "@silverstripe/webpack-config": "^0.4.0",
