@@ -4,7 +4,7 @@ import ACTION_TYPES from './SSCounterActionTypes';
 export function increment(props) {
   return (dispatch, getState) => {
     const store = getState();
-    const fields = { ...store.Marcz.SSCounter.fields };
+    const fields = Object.assign({}, { ...store.Marcz.SSCounter.fields });
     let value = 0;
 
     if (fields[props.name] !== undefined) {
@@ -22,10 +22,24 @@ export function increment(props) {
   };
 }
 
+export function initial(props) {
+  return (dispatch, getState) => {
+    const store = getState();
+    const fields = Object.assign({}, { ...store.Marcz.SSCounter.fields });
+
+    fields[props.name] = parseInt(props.value, 10);
+
+    dispatch({
+      type: ACTION_TYPES.INITIAL,
+      payload: { ...props, ...{ fields } },
+    });
+  };
+}
+
 export function clean(props) {
   return (dispatch, getState) => {
     const store = getState();
-    const fields = { ...store.Marcz.SSCounter.fields };
+    const fields = Object.assign({}, { ...store.Marcz.SSCounter.fields });
 
     fields[props.name] = undefined;
 

@@ -17,12 +17,34 @@ class SSCounterReact extends Component {
   }
 
   componentWillMount() {
+    this.props.actions.SSCounter.initial(this.props);
     this.updateLocalState();
   }
+
+  // componentWillReceiveProps(nextProps) {
+  //   console.log('componentWillReceiveProps', nextProps);
+  // }
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log('shouldComponentUpdate', nextProps, nextState);
+  // }
+
+  // componentWillUpdate(nextProps, nextState) {
+  //   console.log('componentWillUpdate', [nextProps, nextState]);
+  // }
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log('componentDidUpdate', [prevProps, prevState]);
+  // }
 
   componentWillUnmount() {
     this.props.actions.SSCounter.clean(this.props);
   }
+
+  // componentDidCatch(error, info) {
+  //   console.log('componentDidCatch', [error, info]);
+  // }
+
   /**
    * Handles click of an item
    *

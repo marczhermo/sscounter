@@ -8,6 +8,8 @@ const initialState = deepFreeze({
 
 function reducer(state = initialState, action) {
   switch (action.type) {
+    case ACTION_TYPES.INITIAL:
+      return deepFreeze({ fields: action.payload.fields });
     case ACTION_TYPES.INCREMENT:
       return deepFreeze({ fields: action.payload.fields });
     case ACTION_TYPES.CLEAN:
