@@ -5,15 +5,9 @@ export function increment(props) {
   return (dispatch, getState) => {
     const store = getState();
     const fields = Object.assign({}, { ...store.Marcz.SSCounter.fields });
-    let value = 0;
+    const value = (fields[props.name] !== undefined) ? fields[props.name] : props.value;
 
-    if (fields[props.name] !== undefined) {
-      value = parseInt(fields[props.name], 10);
-    } else {
-      value = parseInt(props.value, 10);
-    }
-
-    fields[props.name] = value + 1;
+    fields[props.name] = parseInt(value, 10) + 1;
 
     dispatch({
       type: ACTION_TYPES.INCREMENT,
