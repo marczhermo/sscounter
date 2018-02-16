@@ -10,6 +10,10 @@ class SSCounterReact extends Component {
     super(props);
     this.render = this.render.bind(this);
     this.increment = this.increment.bind(this);
+    this.listener = this.listener.bind(this);
+
+    const store = root.ss.store;
+    store.subscribe(this.listener);
 
     this.state = {
       value: 0
@@ -53,7 +57,6 @@ class SSCounterReact extends Component {
   increment(event) {
     event.preventDefault();
     this.props.actions.SSCounter.increment(this.props);
-    this.updateLocalState();
   }
 
   updateLocalState() {
@@ -69,6 +72,16 @@ class SSCounterReact extends Component {
       this.setState({
         value: this.props.value
       });
+    }
+  }
+
+  listener() {
+    const store = root.ss.store;
+    const state = store.getState();
+    const fieldName = this.props.name;
+
+    if (state.Marcz.SSCounter.fields[fieldName] !== this.state.value) {
+      this.updateLocalState();
     }
   }
 
