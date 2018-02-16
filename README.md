@@ -15,6 +15,17 @@ $ composer require silverstripe/marcz-sscounter
 
 You'll also need to run `vendor/bin/sake dev/build`.
 
+## Concepts
+
+1. Like `TextField` which we can create as many as we like. `SSCounterField` will behave similar to it by making small React components which are independent of each other, and will manage its own local state for the value.
+2. Implement **Redux** to tap into the Frameworks's global state for storing information of all small components created. Probably tap into "Redux Time Travel".
+
+## Todos
+
+1. Unit testing React components with **Jest**
+2. More refactoring from peer review.
+3. GraphQL maybe, REST for the meantime.
+
 ## Documentation
 
 So this is an implementaion of `TextField`, and to illustrate the idea.
