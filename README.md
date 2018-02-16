@@ -80,7 +80,7 @@ class AdminCounter extends ModelAdmin
 }
 ```
 
-Pretty much so far this is very straight forward. We can run `vendor\bin\sake dev/build` for SS4.
+Pretty much so far this is very straight forward. We now can reload the page with `?flush`
 Below is the screenshot of a single record we can create and edit.
 
 ![TextField Version](https://raw.githubusercontent.com/marczhermo/silverstripe-sscounter/master/docs/img/TextField_version.png)
