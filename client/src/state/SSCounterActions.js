@@ -44,8 +44,8 @@ export function clean(props) {
     fields[props.name] = undefined;
 
     dispatch({
-      type: ACTION_TYPES.INCREMENT,
-      payload: { ...{ fields } },
+      type: ACTION_TYPES.CLEAN,
+      payload: { ...props, ...{ fields } },
     });
   };
 }
