@@ -1,4 +1,5 @@
 <?php
+
 namespace Marcz\SSCounter;
 
 use SilverStripe\Core\Extension;
