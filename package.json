@@ -1,24 +1,25 @@
 {
-  "name": "silverstripe-sscounter",
+  "name": "sscounter",
   "version": "1.0.0",
-  "description": "Button SSCounter",
-  "directories": {
-    "test": "tests"
-  },
+  "description": "ButtonField - SSCounter [SilverStripe]",
   "engines": {
-    "node": "^6.x"
+    "node": ">=10.x"
   },
   "scripts": {
-    "build": "yarn && yarn test && NODE_ENV=production webpack -p --bail --progress",
+    "build": "yarn && NODE_ENV=production webpack -p --bail --progress",
     "watch": "yarn && NODE_ENV=development webpack --watch --progress",
     "css": "yarn && WEBPACK_CHILD=css webpack -p --bail --progress",
     "test": "jest",
     "coverage": "jest --coverage",
-    "lint": "eslint client/src && sass-lint -v client/src"
+    "lock": "npm-shrinkwrap --dev",
+    "lint": "eslint client/src && sass-lint -v client/src",
+    "lint-js": "eslint client/src",
+    "lint-js-fix": "eslint client/src --fix",
+    "lint-sass": "sass-lint client/src"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/marczhermo/silverstripe-sscounter.git"
+    "url": "git://github.com/marczhermo/sscounter.git"
   },
   "keywords": [
     "silverstripe",
@@ -27,33 +28,42 @@
   "author": "Marco Hermo",
   "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/marczhermo/silverstripe-sscounter/issues"
+    "url": "https://github.com/marczhermo/sscounter/issues"
   },
-  "homepage": "https://github.com/marczhermo/silverstripe-sscounter",
+  "homepage": "https://github.com/marczhermo/sscounter",
   "dependencies": {
     "bootstrap": "4.0.0-beta",
     "classnames": "^2.2.5",
     "deep-freeze-strict": "^1.1.1",
     "es6-promise": "^3.1.2",
-    "react": "^15.3.1",
-    "react-addons-test-utils": "^15.3.1",
+    "react": "^16.6.1",
+    "react-addons-test-utils": "^15.6.2",
     "react-bootstrap-ss": "^0.30.9",
-    "react-dom": "^15.3.1",
-    "react-redux": "^4.4.1",
-    "react-router": "^2.4.1",
-    "react-router-redux": "^4.0.5",
-    "redux": "https://registry.npmjs.org/redux/-/redux-3.0.5.tgz",
-    "redux-form": "^6.0.2",
+    "react-dom": "^16.6.1",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.4.0-beta.6",
+    "react-router-config": "^4.4.0-beta.6",
+    "redux": "^4.0.0",
+    "redux-form": "^7.4.2",
     "redux-mock-store": "^1.2.3",
     "redux-thunk": "^2.2.0",
-    "window-or-global": "^1.0.1"
+    "validator": "^6.1.0",
+    "window-or-global": "^1.0.1",
+    "webpack-sources": "^1.1.0"
   },
   "devDependencies": {
-    "@silverstripe/webpack-config": "^0.4.0",
-    "babel-jest": "^19.0.0",
-    "jest-cli": "^19.0.2",
+    "@silverstripe/eslint-config": "^0.0.5",
+    "@silverstripe/webpack-config": "^1.0.0",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.6.0",
+    "babel-runtime": "^6.26.0",
+    "copy-webpack-plugin": "^4.2.0",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
+    "html-loader": "^0.5.1",
+    "jest-cli": "^23.6.0",
     "toposort": "^1.0.3",
-    "validator": "^6.1.0"
+    "webpack": "^2"
   },
   "jest": {
     "roots": [
@@ -61,10 +71,13 @@
     ],
     "modulePaths": [
       "client/src",
+      "client/src",
       "../admin/client/src",
       "../admin/node_modules",
-      "vendor/silverstripe/admin/client/src",
-      "vendor/silverstripe/admin/node_modules"
+      "../silverstripe/admin/client/src",
+      "../silverstripe/admin/node_modules",
+      "../../silverstripe/admin/client/src",
+      "../../silverstripe/admin/node_modules"
     ],
     "testMatch": [
       "**/tests/**/*-test.js?(x)"
