@@ -9,7 +9,7 @@ class SSCounterAdminExtension extends Extension
 {
     public function init()
     {
-        Requirements::javascript('silverstripe/marcz-sscounter: client/dist/js/bundle.js');
-        Requirements::css('silverstripe/marcz-sscounter: client/dist/styles/bundle.css');
+        Requirements::javascript('marczhermo/sscounter: client/dist/js/bundle.js');
+        Requirements::css('marczhermo/sscounter: client/dist/styles/bundle.css');
     }
 }
