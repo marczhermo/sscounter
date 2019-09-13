@@ -10,7 +10,7 @@ Feel free to learn from it but don't use it as a single source of truth. :)
 ## Installation
 
 ```
-$ composer require silverstripe/marcz-sscounter
+$ composer require marczhermo/sscounter
 ```
 
 You'll also need to run `vendor/bin/sake dev/build`.
@@ -139,7 +139,7 @@ class SampleCounter extends DataObject
 ```
 
 And hopefully, with any luck we should see the following screenshot when whe refreshed the page. Fingers crossed.
-![SSCounterField Version](https://raw.githubusercontent.com/marczhermo/silverstripe-sscounter/master/docs/img/SSCounterField_version.png)
+![SSCounterField Version](https://raw.githubusercontent.com/marczhermo/sscounter/master/docs/img/SSCounterField_version.png)
 
 
 ## Versioning
@@ -156,7 +156,7 @@ but if you're overriding methods then please test your work before upgrading.
 
 ## Reporting Issues
 
-Please [create an issue](https://github.com/marczhermo/silverstripe-sscounter/issues)
+Please [create an issue](https://github.com/marczhermo/sscounter/issues)
 for any bugs you've found, or features you're missing.
 
 ## License
