@@ -2,5 +2,7 @@
 Name: sscounter
 ---
 SilverStripe\Admin\LeftAndMain:
-  extensions:
-    - Marcz\SSCounter\SSCounterAdminExtension
+  extra_requirements_javascript:
+    - 'marczhermo/sscounter: client/dist/js/bundle.js'
+  extra_requirements_css:
+    - 'marczhermo/sscounter: client/dist/styles/bundle.css'

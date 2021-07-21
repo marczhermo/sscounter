@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 
-const SSCounterReact = ({extraClass, value, id, name, ...props}) => {
+const SSCounterField = ({extraClass, value, id, name, ...props}) => {
 
   const [currentValue, setCurrentValue] = useState(parseInt(value));
 
   const increment = (event) => {
+    console.log({...props});
     setCurrentValue(currentValue + 1);
   };
 
   return (
-    <div className="sscounter-react-component">
+    <div className="sscounter-react-component sscounter-component">
       <input
         type="hidden"
         className={extraClass}
@@ -24,4 +25,4 @@ const SSCounterReact = ({extraClass, value, id, name, ...props}) => {
   );
 };
 
-export default SSCounterReact;
+export default SSCounterField;
