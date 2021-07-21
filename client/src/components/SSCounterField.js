@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 
-const SSCounterField = ({extraClass, value, id, name, ...props}) => {
-
-  const [currentValue, setCurrentValue] = useState(parseInt(value));
+const SSCounterField = ({extraClass, value, id, name, onChange, ...props}) => {
 
   const increment = (event) => {
     console.log({...props});
-    setCurrentValue(currentValue + 1);
+    onChange(event, { id, value: value+1})
   };
 
   return (
@@ -14,12 +12,12 @@ const SSCounterField = ({extraClass, value, id, name, ...props}) => {
       <input
         type="hidden"
         className={extraClass}
-        value={currentValue}
+        value={value}
         id={id}
         name={name}
       />
       <button className="btn btn-lg font-icon-plus" onClick={increment}>
-        <span className="btn__title">{currentValue}</span>
+        <span className="btn__title">{value}</span>
       </button>
     </div>
   );
