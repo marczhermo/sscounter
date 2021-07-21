@@ -3,12 +3,11 @@ import React, { useState } from 'react';
 const SSCounterField = ({extraClass, value, id, name, onChange, ...props}) => {
 
   const increment = (event) => {
-    console.log({...props});
     onChange(event, { id, value: value+1})
   };
 
   return (
-    <div className="sscounter-react-component sscounter-component">
+    <div className="sscounter-react-component">
       <input
         type="hidden"
         className={extraClass}

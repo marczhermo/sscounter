@@ -24,4 +24,19 @@ class SSCounterField extends ReactFormField
     {
         return parent::Value() ?: 0;
     }
+
+    /**
+     * Compiles all CSS-classes.
+     *
+     * @return string
+     */
+    public function extraClass()
+    {
+        $extraClasses = [];
+        if (!empty($this->extraClasses)) {
+            $extraClasses = $this->extraClasses;
+        }
+
+        return implode(' ', array_unique($extraClasses));
+    }
 }
