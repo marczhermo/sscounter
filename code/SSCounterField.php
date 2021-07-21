@@ -21,7 +21,7 @@ class SSCounterField extends FormField
         return [
             'name'        => $this->getName(),
             'value'       => $this->Value() ?: 0,
-            'extraClass'  => 'sscounter sscounter-info',
+            'extraClass'  => $this->extraClass(),
         ];
     }
 
@@ -53,5 +53,20 @@ class SSCounterField extends FormField
         $this->extend('updateAttributes', $attributes);
 
         return $attributes;
+    }
+
+    /**
+     * Compiles all CSS-classes.
+     *
+     * @return string
+     */
+    public function extraClass()
+    {
+        $extraClasses = [];
+        if (!empty($this->extraClasses)) {
+            $extraClasses = $this->extraClasses;
+        }
+
+        return implode(' ', array_unique($extraClasses));
     }
 }
