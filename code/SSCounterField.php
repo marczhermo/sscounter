@@ -18,7 +18,11 @@ class SSCounterField extends FormField
 
     public function getProps(): array
     {
-        return [];
+        return [
+            'name'        => $this->getName(),
+            'value'       => $this->Value() ?: 0,
+            'extraClass'  => 'sscounter sscounter-info',
+        ];
     }
 
     public function getComponent(): string
