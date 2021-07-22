@@ -15,6 +15,8 @@ class SSCounterField extends ReactFormField
 
     protected $schemaComponent = 'SSCounterField';
 
+    protected $renderInput = true;
+
     public function getComponent(): string
     {
         return $this->schemaComponent;

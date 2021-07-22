@@ -7,14 +7,7 @@ const SSCounterField = ({extraClass, value, id, name, onChange, ...props}) => {
   };
 
   return (
-    <div className="sscounter-react-component">
-      <input
-        type="hidden"
-        className={extraClass}
-        value={value}
-        id={id}
-        name={name}
-      />
+    <div className={"sscounter-react-component " + extraClass } >
       <button className="btn btn-lg font-icon-plus" onClick={increment}>
         <span className="btn__title">{value}</span>
       </button>
