@@ -15,6 +15,16 @@ class SSCounterField extends ReactFormField
 
     protected $schemaComponent = 'SSCounterField';
 
+    public function getProps(): array
+    {
+        return array_merge(
+            parent::getProps(),
+            [
+                'extraClass' => $this->extraClass(),
+            ]
+        );
+    }
+
     public function getComponent(): string
     {
         return $this->schemaComponent;
