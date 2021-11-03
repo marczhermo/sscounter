@@ -48,7 +48,7 @@
     "redux-form": "^7.4.2",
     "redux-mock-store": "^1.2.3",
     "redux-thunk": "^2.2.0",
-    "validator": "^6.1.0",
+    "validator": "^13.7.0",
     "webpack-sources": "^1.1.0",
     "window-or-global": "^1.0.1"
   },
