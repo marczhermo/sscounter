@@ -1,20 +1,20 @@
 // Reference _variables.scss
-.sscounter-info + button {
+.sscounter-info > button {
     background: $brand-primary;
 }
-.sscounter-success + button {
+.sscounter-success > button {
     background: $brand-success;
 }
-.sscounter-warning + button {
+.sscounter-warning > button {
     background: $orange;
 }
-.sscounter-danger + button {
+.sscounter-danger > button {
     background: $brand-danger;
 }
-.sscounter-happy + button {
+.sscounter-happy > button {
     background: $yellow;
 }
-.sscounter-sad + button {
+.sscounter-sad > button {
     background: $purple;
 }
 .sscounter {

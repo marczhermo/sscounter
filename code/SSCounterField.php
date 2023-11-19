@@ -2,34 +2,29 @@
 
 namespace Marcz\SSCounter;
 
+use MaximeRainville\SilverstripeReact\ReactFormField;
+use SilverStripe\Admin\LeftAndMain;
+use SilverStripe\Control\Director;
 use SilverStripe\Forms\FormField;
+use MaximeRainville\SilverstripeReact\BootstrapComponent;
 
-class SSCounterField extends FormField
+class SSCounterField extends ReactFormField
 {
+
     protected $schemaDataType = FormField::SCHEMA_DATA_TYPE_CUSTOM;
 
     protected $schemaComponent = 'SSCounterField';
 
-    /**
-     * Attributes to be given for this field type.
-     *
-     * @return array
-     */
-    public function getAttributes()
+    protected $renderInput = true;
+
+    public function getComponent(): string
     {
-        $attributes = [
-            'class'       => $this->extraClass(),
-            'id'          => $this->ID(),
-            'name'        => $this->getName(),
-            'value'       => $this->Value(),
-            'data-schema' => json_encode($this->getSchemaData()),
-            'data-state'  => json_encode($this->getSchemaState()),
-        ];
-
-        $attributes = array_merge($attributes, $this->attributes);
-
-        $this->extend('updateAttributes', $attributes);
-
-        return $attributes;
+        return $this->schemaComponent;
     }
+
+    public function Value()
+    {
+        return parent::Value() ?: 0;
+    }
+
 }
