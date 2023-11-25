@@ -1,4 +1,4 @@
-/* global document */
+/* eslint-disable */
 import Injector from 'lib/Injector';
 import SSCounterField from '../components/SSCounterField';
 
