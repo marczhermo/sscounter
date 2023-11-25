@@ -3,15 +3,15 @@
   "version": "1.0.0",
   "description": "ButtonField - SSCounter [SilverStripe]",
   "engines": {
-    "node": ">=10.x"
+    "node": "^18.x"
   },
   "scripts": {
-    "build": "yarn && NODE_ENV=production webpack -p --bail --progress",
-    "watch": "yarn && NODE_ENV=development webpack --watch --progress",
+    "build": "yarn && yarn lint && rm -rf client/dist/* && NODE_ENV=production webpack --mode production --bail --progress",
+    "dev": "rm -rf client/dist/* && NODE_ENV=development webpack --progress",
+    "watch": "NODE_ENV=development webpack --watch --progress",
     "css": "yarn && WEBPACK_CHILD=css webpack -p --bail --progress",
     "test": "jest",
     "coverage": "jest --coverage",
-    "lock": "npm-shrinkwrap --dev",
     "lint": "eslint client/src && sass-lint -v client/src",
     "lint-js": "eslint client/src",
     "lint-js-fix": "eslint client/src --fix",
@@ -31,40 +31,44 @@
     "url": "https://github.com/marczhermo/sscounter/issues"
   },
   "homepage": "https://github.com/marczhermo/sscounter",
-  "dependencies": {
-    "bootstrap": "4.0.0-beta",
-    "classnames": "^2.2.5",
-    "deep-freeze-strict": "^1.1.1",
-    "es6-promise": "^3.1.2",
-    "prop-types": "^15.7.2",
-    "react": "^16.6.1",
-    "react-addons-test-utils": "^15.6.2",
-    "react-bootstrap-ss": "^0.30.9",
-    "react-dom": "^16.6.1",
-    "react-redux": "^5.0.7",
-    "react-router": "^4.4.0-beta.6",
-    "react-router-config": "^4.4.0-beta.6",
-    "redux": "^4.0.0",
-    "redux-form": "^7.4.2",
-    "redux-mock-store": "^1.2.3",
-    "redux-thunk": "^2.2.0",
-    "validator": "^6.1.0",
-    "webpack-sources": "^1.1.0",
-    "window-or-global": "^1.0.1"
-  },
   "devDependencies": {
-    "@silverstripe/eslint-config": "^0.0.5",
-    "@silverstripe/webpack-config": "^1.0.0",
-    "babel-core": "^6.26.3",
-    "babel-jest": "^23.6.0",
-    "babel-runtime": "^6.26.0",
-    "copy-webpack-plugin": "^4.2.0",
-    "enzyme": "^3.6.0",
-    "enzyme-adapter-react-16": "^1.5.0",
-    "html-loader": "^0.5.1",
-    "jest-cli": "^23.6.0",
-    "toposort": "^1.0.3",
-    "webpack": "^2"
+    "@babel/runtime": "^7.20.0",
+    "@silverstripe/eslint-config": "^1.0.0-alpha6",
+    "@silverstripe/webpack-config": "^2.0.0-alpha9",
+    "@testing-library/jest-dom": "^5.17.0",
+    "autoprefixer": "^10.4.14",
+    "babel-jest": "^29.2.2",
+    "jest-cli": "^29.2.2",
+    "jest-environment-jsdom": "^29.3.1",
+    "postcss": "^8.4.25",
+    "postcss-custom-properties": "^13.2.1",
+    "postcss-loader": "^7.3.3",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^5.0.0"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.7.1",
+    "array-move": "^4.0.0",
+    "bootstrap": "^4.6.2",
+    "classnames": "^2.2.5",
+    "core-js": "^3.26.0",
+    "deep-freeze-strict": "^1.1.1",
+    "es6-promise": "^4.2.8",
+    "prop-types": "^15.8.1",
+    "qs": "^6.11.0",
+    "react-redux": "^8.0.4",
+    "react-router": "^6.4.2",
+    "react-router-dom": "^6.4.2",
+    "react-select": "^5.5.8",
+    "redux": "^4.2.0",
+    "redux-form": "^8.3.8",
+    "redux-thunk": "^2.4.1",
+    "uuid": "^8.3.2",
+    "webpack-sources": "^3.2.3"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "jest": {
     "roots": [
@@ -72,28 +76,21 @@
     ],
     "modulePaths": [
       "client/src",
-      "client/src",
+      "/var/www/skeleton2/vendor/silverstripe/admin/client/src",
+      "/var/www/skeleton2/vendor/silverstripe/admin/node_modules",
       "../admin/client/src",
       "../admin/node_modules",
-      "../silverstripe/admin/client/src",
-      "../silverstripe/admin/node_modules",
       "../../silverstripe/admin/client/src",
-      "../../silverstripe/admin/node_modules"
+      "../../silverstripe/admin/node_modules",
+      "vendor/silverstripe/admin/client/src",
+      "vendor/silverstripe/admin/node_modules"
     ],
     "testMatch": [
       "**/tests/**/*-test.js?(x)"
     ],
     "transform": {
       ".*": "babel-jest"
-    }
-  },
-  "babel": {
-    "presets": [
-      "react",
-      "env"
-    ],
-    "plugins": [
-      "transform-object-rest-spread"
-    ]
+    },
+    "testEnvironment": "jsdom"
   }
 }
